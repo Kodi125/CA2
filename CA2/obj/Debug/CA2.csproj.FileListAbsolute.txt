@@ -1,0 +1,14 @@
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\bin\Debug\CA2.exe.config
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\bin\Debug\CA2.exe
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\bin\Debug\CA2.pdb
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\obj\Debug\CA2.csprojAssemblyReference.cache
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\obj\Debug\MainWindow.g.cs
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\obj\Debug\App.g.cs
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\obj\Debug\CA2_MarkupCompile.cache
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\obj\Debug\CA2_MarkupCompile.lref
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\obj\Debug\MainWindow.baml
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\obj\Debug\CA2.g.resources
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\obj\Debug\CA2.Properties.Resources.resources
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\obj\Debug\CA2.csproj.GenerateResource.cache
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\obj\Debug\CA2.exe
+C:\Users\Johnathon\OneDrive - Institute of Technology Sligo\year two\Assignments\OOP\CA2\CA2\obj\Debug\CA2.pdb
