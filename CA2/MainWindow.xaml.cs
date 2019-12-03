@@ -69,9 +69,7 @@ namespace CA2
             //implementing the IComparable to sort the Listbox by date on the window load
             AllActivities.Sort();
             //setting the itemsource for the first listbox to be the list 'activities' so that it is populated on window load
-            lbxAllActivities.ItemsSource = AllActivities;
-
-            
+            PopulatingLists();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -89,12 +87,11 @@ namespace CA2
                     if (selectedActivity.ActivityDate == SelectedActivities[i].ActivityDate)
                     {
                         //adds whatever item was selected back to the all activities listbox
-                        AllActivities.Add(selectedActivity);
                         //calls the method to refresh the listboxes and the textblock to display any changes 
                         RefreshTotalTextBlock();                   
                         MessageBox.Show("There is already an activity planned on this date!!!");
                         SelectedActivities.Remove(selectedActivity);
-                        RefreshListBoxes();
+                        RefreshListBox1();
                         AddOrNot = false;
                     }
                 }
@@ -102,11 +99,15 @@ namespace CA2
                 {
                     //removes whatever item was selected from the all activities listbox 
                     AllActivities.Remove(selectedActivity);
+                    LandActivities.Remove(selectedActivity);
+                    WaterActivities.Remove(selectedActivity);
+                    AirActivities.Remove(selectedActivity);
                     //adds whatever item was selected to the selected activities listbox
                     SelectedActivities.Add(selectedActivity);
                     RunningTotal += selectedActivity.Cost;
                     //calls the methods to refresh the listboxes and the textblock to display any changes 
-                    RefreshListBoxes();
+                    RefreshListBox2();
+                    RefreshListBox1();
                     RefreshTotalTextBlock();
                 }
             }
@@ -128,9 +129,24 @@ namespace CA2
                 SelectedActivities.Remove(selectedActivity);
                 //adds whatever item was selected back to the all activities listbox
                 AllActivities.Add(selectedActivity);
+                if (selectedActivity.TypeOfActivity == ActivityType.Land)
+                {
+                    LandActivities.Add(selectedActivity);
+                }
+
+
+                else if (selectedActivity.TypeOfActivity == ActivityType.Water)
+                {
+                    WaterActivities.Add(selectedActivity);
+                }
+                else if (selectedActivity.TypeOfActivity == ActivityType.Air)
+                {
+                    AirActivities.Add(selectedActivity);
+                }
                 RunningTotal -= selectedActivity.Cost;
                 //calls the method to refresh the listboxes and the textblock to display any changes 
-                RefreshListBoxes();
+                RefreshListBox1();
+                RefreshListBox2();
                 RefreshTotalTextBlock();
             }
             //if the add button is clicked and the object selectedActivity is null, an error message is dispalyed to the user
@@ -139,18 +155,36 @@ namespace CA2
                 MessageBox.Show("There was nothing selected to remove");
             }
         }
-        private void RefreshListBoxes()
+        private void RefreshListBox2()
         {
-            //sets the item source as null so it drops all data it currently holds
-            lbxAllActivities.ItemsSource = null;
-            //reassigns the item source so it can see that items were added to it
-            AllActivities.Sort();
-            lbxAllActivities.ItemsSource = AllActivities;
             //sets the item source as null so it drops all data it currently holds
             lbxSelectedActivities.ItemsSource = null;
             SelectedActivities.Sort();
             //reassigns the item source so it can see that items were added to it
             lbxSelectedActivities.ItemsSource = SelectedActivities;
+        }
+        private void RefreshListBox1()
+        {
+            if (radioAll.IsChecked == true)
+            {
+                lbxAllActivities.ItemsSource = null;
+                lbxAllActivities.ItemsSource = AllActivities;
+            }
+            else if (radioLand.IsChecked == true)
+            {
+                lbxAllActivities.ItemsSource = null;
+                lbxAllActivities.ItemsSource = LandActivities;
+            }
+            else if (radioWater.IsChecked == true)
+            {
+                lbxAllActivities.ItemsSource = null;
+                lbxAllActivities.ItemsSource = WaterActivities;
+            }
+            else if (radioAir.IsChecked == true)
+            {
+                lbxAllActivities.ItemsSource = null;
+                lbxAllActivities.ItemsSource = AirActivities;
+            }
         }
         //method for updating the contents within the TextBlock
         private void RefreshTotalTextBlock()
@@ -173,51 +207,27 @@ namespace CA2
         {
 
         }
-
+        private void PopulatingLists()
+        {
+            foreach (Activity activity in AllActivities)
+            {
+                if (activity.TypeOfActivity == ActivityType.Land)
+                {
+                    LandActivities.Add(activity);
+                }
+                else if (activity.TypeOfActivity == ActivityType.Water)
+                {
+                    WaterActivities.Add(activity);
+                }
+                else if (activity.TypeOfActivity == ActivityType.Air)
+                {
+                    AirActivities.Add(activity);
+                }
+            }
+        }
         private void radioAll_Click(object sender, RoutedEventArgs e)
         {
-
-            if (radioAll.IsChecked == true)
-            {
-                RefreshListBoxes();
-            }
-            else if (radioLand.IsChecked == true)
-            {
-
-                foreach (Activity activity in AllActivities)
-                {
-                    if (activity.TypeOfActivity == ActivityType.Land)
-                    {
-                        LandActivities.Add(activity);
-                        lbxAllActivities.ItemsSource = null;
-                        lbxAllActivities.ItemsSource = LandActivities;
-                    }
-                }
-            }
-            else if (radioWater.IsChecked == true)
-            {
-                foreach (Activity activity in AllActivities)
-                {
-                    if (activity.TypeOfActivity == ActivityType.Water)
-                    {
-                        WaterActivities.Add(activity);
-                        lbxAllActivities.ItemsSource = null;
-                        lbxAllActivities.ItemsSource = WaterActivities;
-                    }
-                }
-            }
-            else if (radioAir.IsChecked == true)
-            {
-                foreach (Activity activity in AllActivities)
-                {
-                    if (activity.TypeOfActivity == ActivityType.Air)
-                    {
-                        AirActivities.Add(activity);
-                        lbxAllActivities.ItemsSource = null;
-                        lbxAllActivities.ItemsSource = AirActivities;
-                    }
-                }
-            }
+            RefreshListBox1();
         }
 
         private void tblkTotalCost_Loaded(object sender, RoutedEventArgs e)

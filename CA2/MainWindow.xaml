@@ -15,7 +15,7 @@
         <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Margin="310.6,238,0,0" VerticalAlignment="Top" Width="75" Click="btnRemove_Click" Grid.Column="1"/>
         <ListBox x:Name="lbxAllActivities" HorizontalAlignment="Left" Height="250" Margin="7.6,96,0,0" VerticalAlignment="Top" Width="250" SelectionChanged="lbxAllActivities_SelectionChanged" Grid.Column="1"/>
         <ListBox x:Name="lbxSelectedActivities" HorizontalAlignment="Left" Height="250" Margin="425.6,96,0,0" VerticalAlignment="Top" Width="250" SelectionChanged="lbxSelectedActivities_SelectionChanged" Grid.Column="1"/>
-        <RadioButton x:Name="radioAll" Content="All" HorizontalAlignment="Left" Margin="24,120,0,0" VerticalAlignment="Top" Click="radioAll_Click" IsChecked="True"/>
+        <RadioButton x:Name="radioAll" Content="All" HorizontalAlignment="Left" Margin="24,120,0,0" VerticalAlignment="Top" Click="radioAll_Click" IsChecked="True" Checked="radioAll_Click"/>
         <RadioButton x:Name="radioLand" Content="Land" HorizontalAlignment="Left" Margin="22,165,0,0" VerticalAlignment="Top" Click="radioAll_Click"/>
         <RadioButton x:Name="radioAir" Content="Air" HorizontalAlignment="Left" Margin="22,254,0,0" VerticalAlignment="Top" Click="radioAll_Click"/>
         <RadioButton x:Name="radioWater" Content="Water" HorizontalAlignment="Left" Margin="22,212,0,0" VerticalAlignment="Top" Click="radioAll_Click"/>
