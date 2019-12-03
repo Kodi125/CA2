@@ -55,8 +55,6 @@ namespace CA2
             Activity a7 = new Activity("Parachuting", "Experience the thrill of free fall while you tandem jump from an airplane.", new DateTime(2019, 06, 01), ActivityType.Air, 100m);
             Activity a8 = new Activity("Hang Gliding", "Soar on hot air currents and enjoy spectacular views of the coastal region.", new DateTime(2019, 06, 02), ActivityType.Air, 80m);
             Activity a9 = new Activity("Helicopter Tour", "Experience the ultimate in aerial sight-seeing as you tour the area in our modern helicopters", new DateTime(2019, 06, 03), ActivityType.Air, 200m);
-
-
             //adding the activity objects to the list
             AllActivities.Add(a1);
             AllActivities.Add(a2);
@@ -84,23 +82,33 @@ namespace CA2
             //if statement to check if anything is selected or not (in the first listbox)
             if (selectedActivity != null)
             {
+                bool AddOrNot = true;
                 //for loop with nested if statement to check that this selected activities date doesn't clash with any other selected date 
                 for (int i = 0; i < SelectedActivities.Count; i++)
                 {
                     if (selectedActivity.ActivityDate == SelectedActivities[i].ActivityDate)
                     {
-                        MessageBox.Show("You already have an activity due on this date!!!");
+                        //adds whatever item was selected back to the all activities listbox
+                        AllActivities.Add(selectedActivity);
+                        //calls the method to refresh the listboxes and the textblock to display any changes 
+                        RefreshTotalTextBlock();                   
+                        MessageBox.Show("There is already an activity planned on this date!!!");
+                        SelectedActivities.Remove(selectedActivity);
+                        RefreshListBoxes();
+                        AddOrNot = false;
                     }
                 }
-                //removes whatever item was selected from the all activities listbox 
-                AllActivities.Remove(selectedActivity);
-                //adds whatever item was selected to the selected activities listbox
-                SelectedActivities.Add(selectedActivity);
-
-                RunningTotal += selectedActivity.Cost;
-                //calls the methods to refresh the listboxes and the textblock to display any changes 
-                RefreshListBoxes();
-                RefreshTotalTextBlock();
+                if (AddOrNot == true)
+                {
+                    //removes whatever item was selected from the all activities listbox 
+                    AllActivities.Remove(selectedActivity);
+                    //adds whatever item was selected to the selected activities listbox
+                    SelectedActivities.Add(selectedActivity);
+                    RunningTotal += selectedActivity.Cost;
+                    //calls the methods to refresh the listboxes and the textblock to display any changes 
+                    RefreshListBoxes();
+                    RefreshTotalTextBlock();
+                }
             }
             //if the add button is clicked and the object selectedActivity is null, an error message is dispalyed to the user
             else
@@ -108,9 +116,6 @@ namespace CA2
                 MessageBox.Show("There was nothing selected to add");
             }
         }
-
-
-
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             //declaring selectedActivity to store whatever item is selected from the second listbox
